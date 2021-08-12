@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 require("./config/express")(app);
 require("./config/routes")(app);
 mongoose.connect(
-    "mongodb+srv://midnightmoet:Kingsland2021!@cubes.x1o99.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://midnightmoet:Kingsland2021!@newcluster.kobiu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
