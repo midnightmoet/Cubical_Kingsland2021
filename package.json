@@ -1,0 +1,27 @@
+{
+  "name": "cubicle_kingsland2021",
+  "version": "1.0.0",
+  "description": "Cubicle project assigned by Kingsland in Mod 5 of the Zero to Blockchain program",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/midnightmoet/Cubical_Kingsland2021.git"
+  },
+  "keywords": [
+    "cubicle",
+    "project",
+    "express",
+    "mongoDB",
+    "mongoose",
+    "headache"
+  ],
+  "author": "Lisa L. Miner",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/midnightmoet/Cubical_Kingsland2021/issues"
+  },
+  "homepage": "https://github.com/midnightmoet/Cubical_Kingsland2021#readme"
+}
