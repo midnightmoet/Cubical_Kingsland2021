@@ -23,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/midnightmoet/Cubical_Kingsland2021/issues"
   },
-  "homepage": "https://github.com/midnightmoet/Cubical_Kingsland2021#readme"
+  "homepage": "https://github.com/midnightmoet/Cubical_Kingsland2021#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.0",
+    "mongoose": "^5.13.7",
+    "nodemon": "^2.0.12",
+    "uniquid": "^1.1.4"
+  }
 }
