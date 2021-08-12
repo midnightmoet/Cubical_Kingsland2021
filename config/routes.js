@@ -19,16 +19,16 @@ module.exports = (app) => {
 	app.post("/create", function (req, res) {
 		console.log(req.body);
 		const newCube = new Cube({
-			name: "Companion Cube",
-			diffLevel: 0,
+			name: "KodyKube",
+			diffLevel: 6,
 			description:
-				"Has round corners and hearts on 6 faces, serves as a shield",
+				"Simply complex cubix rubix",
 			imageURL: "to be determined",
 		});
 		console.log(newCube);
 		newCube.save(function (err, newCube) {
 			if (err) return console.error(err);
-			console.log("Cube saved.");
+			console.log("Cube saved, finally");
 		});
 		res.send("Form submitted");
 	});
