@@ -1,12 +1,11 @@
-const env = process.env.NODE_ENV || 'development';
-const exphbs = require('express-handlebars');
-const config = require('./config/config')[env];
-const app = require('express')();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const env = process.env.NODE_ENV || "development";
+const config = require("./config/config")[env];
+const app = require("express")();
+const mongoose = require("mongoose");
 
-require('./config/express')(app);
-require('./config/routes')(app);
+require("./config/express")(app);
+require("./config/routes")(app);
+
 
 mongoose.connect("mongodb+srv://midnightmoet:Kingsland2021!@newcluster.kobiu.mongodb.net/NewCluster?retryWrites=true&w=majority",  {
     dbName: "Cubes",
@@ -29,12 +28,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
   console.log("mongoose dataBase connected");
 });
-
 //Once our connection opens, our callback will be called. For brevity, let's assume that all following code is within this callback.
-
-
 
 app.listen(
     config.port,
-    console.log(`Listening on port ${config.port}! server is running..`)
-  );
+    console.log(`Listening on port ${config.port}! Now its up to you...`)
+);

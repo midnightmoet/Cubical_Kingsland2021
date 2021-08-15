@@ -1,0 +1,3 @@
+use('Cubes')
+
+db.cubes.insertOne({'name': "KrashKube"})

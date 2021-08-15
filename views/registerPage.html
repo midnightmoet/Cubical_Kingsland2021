@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Login Page</title>
+  <title>Register Page</title>
   <link href="./css/site.css" type="text/css" rel="stylesheet">
   <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
 </head>
@@ -12,7 +12,7 @@
   <div class="container">
     <header>
       <ul>
-        <li><img class="logo" src="./images/logo.png"></li>
+        <li><img class="logo" src="./images/logo.png" alt="logo"></li>
         <li><a href="/">Browse</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/create">Add a Cube</a></li>
@@ -23,31 +23,20 @@
       </ul>
     </header>
     <main>
-    <h1>Login Form</h1>
-    <div class="form">
-      <form action='/login' method="POST">
-        {{#if loginMsg}}
-        <h5 class="error">{{loginMsg}}</h5>
-        {{/if}}
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <input type="submit" value="Login">
-      </form>
-    </div>
-	{{!-- <h1>Login Form</h1>
+	<h1>Register Form</h1>
 <div class="form">
-    <form action='/' method="POST">
+    <form action='/register' method="POST">
         <label for="username">Username</label>
         <input type="text" id="username" name="username">
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password">
-        <input type="submit" value="Login">
+
+        <label for="repeatPassword">Re-Password</label>
+        <input type="password" id="repeatPassword" name="repeatPassword">
+        <input type="submit" value="Register">
     </form>
-</div> --}}
+</div>
     </main>
   </div>
   <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>

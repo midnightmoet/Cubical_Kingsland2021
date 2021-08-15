@@ -1,9 +1,15 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const schema = new Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true, maxLength: 250 },
-    imageUrl: { type: String, required: true, match: /^https?:\/\// }
+const accessorySchema = new Schema ({
+    id: Schema.Types.ObjectId,
+    name: String,
+    description: String,
+    imageUrl: String,
+    //Cubes: [{ type: Schema.Types.ObjectId, Cubes: Cubes }]
+
 });
 
-module.exports = model('Accessory', schema);
+const Accessory = mongoose.model("Accessory", accessorySchema);
+
+module.exports = Accessory;

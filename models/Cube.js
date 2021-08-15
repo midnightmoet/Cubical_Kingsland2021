@@ -1,16 +1,30 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require("mongoose");
 
-const schema = new Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true, maxLength: 250 },
-    imageUrl: { type: String, required: true, match: /^https?:\/\// },
-    difficulty: { type: Number, required: true, min: 1, max: 6},
-    accessories: [{ type: Schema.Types.ObjectId, ref: 'Accessory' }],
-    author: { type: Schema.Types.ObjectId, ref: 'User' }
+const cubeSchema = new mongoose.Schema({
+	name: String,
+	diffLevel: Number,
+	description: String,
+	imageURL: String,
 });
 
-module.exports = model('Cube', schema);
+const Cube = mongoose.model("Cube", cubeSchema);
 
-//---------Explanation --- //
-// 
+module.exports = Cube; //stays on the bottom
 
+//----- just reference code for now
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+// //const Accessory = require('./accessory);
+
+// const cubeSchema = new Schema ({
+//     id: Number, //Schema.Types.ObjectId
+//     name: String,
+//     description: String,
+//     imageUrl: String,
+//     difficultyLevel: Number,
+//     //accessories: [{ type: Schema.Types.ObjectId, ref: 'Accessory }]
+// });
+
+// const Cube = mongoose.model('Cube', cubeSchema);
+
+// module.exports = Cube;
