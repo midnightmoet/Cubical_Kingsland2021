@@ -1,12 +1,16 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose');
 
-const cubeSchema = new mongoose.Schema({
-	name: String,
-	diffLevel: Number,
-	description: String,
-	imageURL: String,
+const schema = new Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true, maxLength: 250 },
+    imageUrl: { type: String, required: true, match: /^https?:\/\// },
+    difficulty: { type: Number, required: true, min: 1, max: 6},
+    accessories: [{ type: Schema.Types.ObjectId, ref: 'Accessory' }],
+    author: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-const Cube = mongoose.model("Cube", cubeSchema);
+module.exports = model('Cube', schema);
 
-module.exports = Cube; //stays on the bottom
+//---------Explanation --- //
+// 
+

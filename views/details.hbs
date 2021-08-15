@@ -19,7 +19,31 @@
       </ul>
     </header>
     <main>
-      <h1>Gan356 Air SM</h1>
+      <h1>{{cube.name}}</h1>
+      <img class="cube" src="{{cube.imageUrl}}">
+      <div class="details">
+        <p><span>Description:</span> {{cube.description}}</p>
+        <p><span>Difficulty level:</span> {{cube.difficultyLevel}}</p>
+        {{#if isCreator}}
+        <a class="btn" href="/edit/{{cube._id}}">Edit</a>
+        <a class="btn" href="/delete/{{cube._id}}">Delete</a>
+        {{/if}}
+        <a class="btn" href="/">Back</a>
+      </div>
+      <h2>Accessories</h2>  
+      <div class="accessories">
+        {{#each cube.accessories}}
+        <div class="accessory">
+          <img src="{{this.imageUrl}}" alt="stickerName">
+          <h3>{{this.name}}</h3>
+          <p>{{this.description}}</p>
+        </div>
+        {{else}}
+        <h3 class="italic">This cube has no accessories yet...</h3>
+        <a class="btn" href="/attach/accessory/{{cube.id}}">Attach an accessory</a>
+        {{/each}}
+      </div>
+      {{!-- <h1>Gan356 Air SM</h1>
       <img class="cube" src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">
       <div class="details">
         <p><span>Description:</span> Magnets in AirSM will not drop, and their positions will be more precise with the
@@ -27,7 +51,7 @@
           comfortable. P.S. This design is brand new for the AirSM.</p>
         <p><span>Difficulty level:</span> 3</p>
         <a class="btn" href="/">Back</a>
-      </div>
+      </div> --}}
     </main>
   </div>
   <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
