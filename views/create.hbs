@@ -15,7 +15,7 @@
         <li><img class="logo" src="./images/logo.png" alt="logo"></li>
         <li><a href="/">Browse</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/create">Add a Cube</a></li>
+        <li><a href="/create">Add A Cube</a></li>
         <li><a href="/create/accessory">Add Accessory</a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/login">Login</a></li>
@@ -25,12 +25,12 @@
     <main>
       <h1>Create</h1>
       <div class="form">
-        <form action='' method="">
+        <form action='/create' method="POST">
           <label for="name">Name</label>
           <input type="text" id="name" name="name">
           <label for="name">Description</label>
           <textarea id="name" name="description"></textarea>
-          <label for="image">ImageUrl</label>
+          <label for="image">Image URL</label>
           <input type="text" id="image" name="imageUrl">
           <label for="difficulty">Difficulty</label>
           <select id="difficulty" name="difficultyLevel">
@@ -51,3 +51,26 @@
 </body>
 
 </html>
+
+{{!-- Hbs conversion needed --}}
+{{!-- <h1>Create</h1>
+      <div class="form">
+        <form action='/create' method="POST">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+          <label for="name">Description</label>
+          <textarea id="name" name="description"></textarea>
+          <label for="image">Image URL</label>
+          <input type="text" id="image" name="imageUrl">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" name="difficultyLevel">
+            <option value="1">1 - Very Easy</option>
+            <option value="2">2 - Easy</option>
+            <option value="3">3 - Medium (Standard 3x3)</option>
+            <option value="4">4 - Intermediate</option>
+            <option value="5">5 - Expert</option>
+            <option value="6">6 - Hardcore</option>
+          </select>
+          <input type="submit" value="Create">
+        </form>
+      </div> --}}

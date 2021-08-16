@@ -19,11 +19,10 @@ module.exports = (app) => {
 	app.post("/create", function (req, res) {
 		console.log(req.body);
 		const newCube = new Cube({
-			name: "Companion Cube",
-			diffLevel: 0,
-			description:
-				"Has round corners and hearts on 6 faces, serves as a shield",
-			imageURL: "to be determined",
+			name: req.body.name,
+			difficultyLevel: req.body.difficultyLevel,
+			description: req.body.description,
+			imageUrl: req.body.imageUrl,
 		});
 		console.log(newCube);
 		newCube.save(function (err, newCube) {
@@ -33,10 +32,10 @@ module.exports = (app) => {
 		res.send("Form submitted");
 	});
 
-	/*app.get("/details", function (req, res) {
+	app.get("/details", function (req, res) {
 		res.render("details");
 	});
-*/
+
 	app.get("/details/:id", function (req, res) {
 		// res.render('details/:id')
 		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);

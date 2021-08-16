@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Register Page</title>
+  <title>Login Page</title>
   <link href="./css/site.css" type="text/css" rel="stylesheet">
   <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
 </head>
@@ -23,18 +23,15 @@
       </ul>
     </header>
     <main>
-	<h1>Register Form</h1>
+	<h1>Login Form</h1>
 <div class="form">
-    <form action='/register' method="POST">
+    <form action='/login' method="POST">
         <label for="username">Username</label>
         <input type="text" id="username" name="username">
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password">
-
-        <label for="repeatPassword">Re-Password</label>
-        <input type="password" id="repeatPassword" name="repeatPassword">
-        <input type="submit" value="Register">
+        <input type="submit" value="Login">
     </form>
 </div>
     </main>
@@ -44,3 +41,16 @@
 </body>
 
 </html>
+
+{{!-- Convert to hbs --}}
+{{!-- <h1>Login Form</h1>
+<div class="form">
+    <form action='/login' method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Login">
+    </form>
+</div> --}}
