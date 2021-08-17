@@ -1,4 +1,5 @@
 const env = process.env.NODE_ENV || "development";
+
 const config = require("./config/config")[env];
 const app = require("express")();
 const mongoose = require("mongoose");
@@ -7,10 +8,12 @@ require("./config/express")(app);
 require("./config/routes")(app);
 
 
-mongoose.connect("mongodb+srv://midnightmoet:Kingsland2021!@newcluster.kobiu.mongodb.net/NewCluster?retryWrites=true&w=majority",  {
-    dbName: "Cubes",
-    user: "midnightmoet",
-    pass: "Kingsland2021!",
+mongoose.connect(
+  "mongodb+srv://midnightmoet:Kingsland2021!@cubes.tyfr7.mongodb.net/Cubicle?retryWrites=true&w=majority", 
+ {
+    // dbName: "Cubicle",
+    // user: "midnightmoet",
+    // pass: "Kingsland2021!",
     useNewUrlParser: true,
     useUnifiedTopology: true
   }
@@ -26,7 +29,7 @@ const db = mongoose.connection;  //declare the db (database)
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
-  console.log("mongoose dataBase connected");
+  console.log("mongoose dataBase is CONNECTED!  YAY!");
 });
 //Once our connection opens, our callback will be called. For brevity, let's assume that all following code is within this callback.
 

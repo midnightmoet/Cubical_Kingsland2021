@@ -29,7 +29,9 @@ module.exports = (app) => {
 			if (err) return console.error(err);
 			console.log("Cube saved.");
 		});
-		res.send("Form submitted");
+		//res.send("Form submitted");
+		res.redirect(301, "/");
+
 	});
 
 	app.get("/details", function (req, res) {
@@ -40,6 +42,15 @@ module.exports = (app) => {
 		// res.render('details/:id')
 		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);
 	});
+
+	app.get("/create/accessory", function (req, res) {
+		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);
+	});
+
+	app.get("/attach/accessory/:id", function (req, res) {
+		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);
+	});
+
 
 	app.get("/*", function (req, res) {
 		res.render("404");

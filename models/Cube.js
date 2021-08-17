@@ -1,13 +1,16 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require("mongoose");
 
-const schema = new Schema({
-	name: { type: String, required: true },
-	description: { type: String, required: true, maxLength: 500 },
-	imageURL: { type: String, required: true, match: /^https?:\/\// },
-	difficultyLevel: { type: Number, min: 1, max: 6 },
-	//Uncommented this threw a Schema undefined
-	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment '}],
-	accessories: [{ type: Schema.Types.ObjectId, ref: 'Accessory' }]
+const Schema = mongoose.Schema;
+
+const cubeSchema = Schema({
+	name: String,
+	description: String,
+	imageUrl: String,
+	difficultyLevel: Number,
+	accessories: [{ type: Schema.Types.ObjectId, ref: "Accessory" }],
+	creatorId: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-module.exports = model('Cube', schema);
+const Cube = mongoose.model("Cube", cubeSchema);
+
+module.exports = Cube;

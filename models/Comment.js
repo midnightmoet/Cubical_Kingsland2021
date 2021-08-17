@@ -1,8 +1,16 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const schema = new Schema({
-    author: { type: String, required: true },
-    content: { type: String, required: true, maxLength: 250 },
+const commentSchema = new mongoose.Schema({
+    author: { 
+        type: String, 
+        required: true 
+    },
+    content: { 
+        type: String, 
+        required: true, maxLength: 250 
+    },
 });
 
-module.exports = model('Comment', schema);
+const Comment = mongoose.model('Comment', commentSchema);
+
+module.exports = Comment;

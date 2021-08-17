@@ -1,0 +1,21 @@
+<body>
+  <div class="container">
+    <header>
+      {{> header}}
+    </header>
+    <main>
+      {{> cubeDetails}}
+
+      <h2>Accessories</h2>
+      {{#if accessories}}
+      {{#each accessories}}
+      {{> accessory}}
+      {{/each}}
+      {{/if}}
+      {{#unless accessories}}
+      <h3 class="italic">This cube has no accessories yet...</h3>
+      {{/unless}}
+    </main>
+  </div>
+  {{> footer}}
+</body>
