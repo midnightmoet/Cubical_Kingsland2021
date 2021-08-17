@@ -4,8 +4,12 @@ const Cube = require("../models/Cube");
 
 module.exports = (app) => {
 	// TODO...
-	app.get("/", function (req, res) {
-		res.render("index");
+	app.get("/",  async  function (req, res) {
+		await Cube.find(function (err, cubes){
+			if(err) return console.error(err);
+			console.log(cubes);
+		res.render("index", { cubes });
+		});
 	});
 
 	app.get("/about", function (req, res) {
