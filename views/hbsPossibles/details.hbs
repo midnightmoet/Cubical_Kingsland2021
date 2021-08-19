@@ -9,7 +9,11 @@
       <h2>Accessories</h2>
       {{#if accessories}}
       {{#each accessories}}
-      {{> accessory}}
+      <div class="accessory">
+        <img src="{{cube.imageUrl}}" alt="stickerName">
+        <h3>{{cube.name}}</h3>
+        <p>{{cube.description}}</p>
+      </div>
       {{/each}}
       {{/if}}
       {{#unless accessories}}
@@ -19,3 +23,5 @@
   </div>
   {{> footer}}
 </body>
+
+{{!-- this for details use cube.name (example) instead of this.name for the specific object --}}

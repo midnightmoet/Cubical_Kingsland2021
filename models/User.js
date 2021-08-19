@@ -1,19 +1,18 @@
-const mongoose = require('mongoose');
-const { stringify } = require('uuid');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userScheme = new mongoose.Schema({
-    id: mongoose.Types.ObjectId,
-    username: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
+const userSchema = new Schema(
+	{
+		username: { type: String, unique: true, required: true },
+		password: { type: String, required: true },
+	},
+	{
+		timestamps: true,
+	}
+);
 
-});
-const User = mongoose.model('User', userScheme);
-
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
+
+// Correct Schema, using userSchema because it makes sense to remind me of where it came from. 

@@ -15,11 +15,18 @@
         <li><img class="logo" src="./images/logo.png"></li>
         <li><a href="/">Browse</a></li>
         <li><a href="/about">About</a></li>
+        {{!-- opening of hbs if - else statement --}}
+        {{#if loggedIn}} 
+        {{!-- if logged in then user can create a cube, accessory and logout --}}
         <li><a href="/create">Add a Cube</a></li>
         <li><a href="/create/accessory">Add Accessory</a></li>
         <li><a href="/logout">Logout</a></li>
+        {{else}}
+        {{!-- if not logged in user has the option to log in OR register for an account--}}
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
+        {{!-- closing of hbs if - else statement --}}
+        {{/if}}
       </ul>
     </header>
     <main>
@@ -31,6 +38,18 @@
         <input type="number" name="to" class="difficulty" placeholder="Difficulty to...">
         <input type="submit" value="search">
       </form>
+      {{!-- hbs replacement code, calls cubes within the MDB --}}
+
+      {{#each cubes}}
+      <div class="cube">
+        <img class="cube" src="{{imageUrl}}">
+        <p class="name">{{this.name}}</p>
+        <p><span>Difficulty level:</span>{{this.difficultyLevel}}</p>
+        <a class="btn" href="/details/{{this._id}}">Details</a>
+      </div>
+      {{/each}}
+      
+      {{!-- hardcoded cubes in html, replace with hbs to make it changeable --}}
       {{!-- <div class="cube">
         <img class="cube" src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">
         <p class="name">Gan356 Air SM</p>
@@ -55,15 +74,6 @@
         <p><span>Difficulty level:</span> 3</p>
         <a class="btn" href="/details/5c3a68d9f78d6638ec8fdad7">Details</a>
       </div> --}}
-
-  {{#each cubes}}
-  <div class="cube">
-    <img class="cube" src="{{this.imageUrl}}">
-    <p class="name">{{this.name}}</p>
-    <p><span>Difficulty level:</span>{{this.difficultyLevel}}</p>
-    <a class="btn" href="/details/{{this._id}}">Details</a>
-  </div>
-  {{/each}}
 
     </main>
   </div>
