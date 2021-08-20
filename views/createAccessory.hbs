@@ -1,3 +1,4 @@
+{{!-- This shows an empty array in terminal and accessories shows up as an array in MDB.  Figure out how to get this functioning. --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
   <meta charset="UTF-8">
   <title>Cubicle</title>
   <link href="/css/site.css" type="text/css" rel="stylesheet">
-  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+  <link rel='shortcut icon' type='image/x-icon' href='../static/images/favicon.png' />
 </head>
 
 <body>
@@ -16,11 +17,11 @@
             {{#each cubes}}
             <div class="form">
                 <form action = '/create/accessory' method="POST">
-                    <label for="name">{{name}}</label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" name="name">
-                    <label for="name">{{description}}</label>
+                    <label for="name">Description</label>
                     <textarea id="name" name="description"></textarea>
-                    <label for="image">{{imageUrl}}</label>
+                    <label for="image">ImageUrl</label>
                     <input type="text" id="image" name="imgURL">
                     <input type="submit" value="Create">
                 </form>

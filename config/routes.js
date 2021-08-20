@@ -23,7 +23,7 @@ module.exports = (app) => {
 
 	app.post("/create", function (req, res) {
 		console.log(req.body);
-		const newCube = new Cube({
+		const newCube = new CubeModel({
 			name: req.body.name,
 			difficultyLevel: req.body.difficultyLevel,
 			description: req.body.description,
@@ -53,7 +53,7 @@ module.exports = (app) => {
 
 
 	app.get("/create/accessory", function (req, res) {
-		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);
+		res.send(`<h1> No CREATE ACCESSORY data yet, id is ${req.params.id} </h1>`);
 		res.render("create/accessory");
 	});
 
@@ -67,7 +67,7 @@ module.exports = (app) => {
 
 
 	app.get("/attach/accessory/:id", function (req, res) {
-		res.send(`<h1> No data yet, id is ${req.params.id} </h1>`);
+		res.send(`<h1> No ATTACH ACCESSORY data yet, id is ${req.params.id} </h1>`);
 	});
 
 

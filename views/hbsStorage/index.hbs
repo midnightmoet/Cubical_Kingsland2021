@@ -1,0 +1,11 @@
+{{!-- This sort of works, no pictures or wording --}}
+      {{#each cubes}}
+      <div class="cube">
+        <img class="cube" src="{{this.imageUrl}}">
+        <p class="name">{{this.name}}</p>
+        <p><span>Difficulty level:</span>{{this.difficultyLevel}}</p>
+        <a class="btn" href="/details/{{this._id}}">Details</a>
+      </div>
+      {{/each}}
+
+{{!-- This would replace the hard coded in cubes. --}}
