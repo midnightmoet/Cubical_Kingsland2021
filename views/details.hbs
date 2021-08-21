@@ -1,4 +1,4 @@
-{{!-- Still not rendering all data --}}
+{{!-- Doesn't break anything per nodemon 8/21 --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,65 +6,40 @@
   <meta charset="UTF-8">
   <title>Cubicle</title>
   <link href="/css/site.css" type="text/css" rel="stylesheet">
-  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.ico' />
 </head>
 
 <body>
   <div class="container">
-    <header>
-      {{> header}}
-    </header>
+    {{> header}}
     <main>
-<h1>{{name}}</h1>
-<img class="cube" src="{{imageUrl}}">
-
-<div class="details">
-    <p><span>Description:</span> {{description}}</p>
-    <p><span>Difficulty level:</span>{{difficulty}}</p>
-    <div class="buttons">
+      <h1>{{cube.name}}</h1>
+      <img class="cube" src="{{cube.imageUrl}}">
+      <div class="details">
+        <p><span>Description:</span>{{cube.description}}</p>
+        <p><span>Difficulty level:</span> {{cube.difficultyLevel}}</p>
         <a class="btn" href="/">Back</a>
-        {{#if creator}}
-        <a class="btn" href="/cube/attach/{{id}}">Attach</a>
-        <a class="btn" href="/cube/edit/{{id}}">Edit</a>
-        <a class="btn" href="/cube/delete/{{id}}">Delete</a>
-        {{/if}}
-
-    </div>
-
-
-</div>
-
-      <h2>Accessories</h2>
-      {{#if accessories}}
-      {{#each accessories}}
-      <div class="accessory">
-        <img src="{{cube.imageUrl}}" alt="stickerName">
-        <h3>{{cube.name}}</h3>
-        <p>{{cube.description}}</p>
+        <a class="btn" href="attach/accessory/{{cube._id}}">Add Accessory</a>
       </div>
-      {{/each}}
-      {{/if}}
-      {{#unless accessories}}
-      <h4 class="italic">This cube has no accessories yet...</h4>
-      {{/unless}}
+      <h2>Accessories</h2>
+        <div class="accessories">
+          {{#if cube.accessories}}
+          {{#each cube.accessories}}
+          <div class="accessory">
+              <img src="{{imageUrl}}" alt="stickerName">
+              <h3>{{name}}</h3>
+              <p>{{description}}</p>
+          </div>
+          {{/each}}
+          {{/if}}
+          {{#unless cube.accessories}}
+          <h3 class="italic">This cube has no accessories yet...</h3>
+          {{/unless}}
+        </div>
     </main>
   </div>
   {{> footer}}
+  {{!-- <footer>@Cubicle: Exercise for Express.js and Handlebars</footer> --}}
 </body>
 
 </html>
-
-{{!-- This code is correct hbs code.  Worked on w/ some fellow devs in class --}}
-
-{{!-- Converted to hbs --}}
-{{!-- <main>
-      <h1>Gan356 Air SM</h1>
-      <img class="cube" src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">
-      <div class="details">
-        <p><span>Description:</span> Magnets in AirSM will not drop, and their positions will be more precise with the
-          Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more
-          comfortable. P.S. This design is brand new for the AirSM.</p>
-        <p><span>Difficulty level:</span> 3</p>
-        <a class="btn" href="/">Back</a>
-      </div>
-    </main> --}}

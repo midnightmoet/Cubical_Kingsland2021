@@ -1,4 +1,4 @@
-{{!-- As of 8/19/21 this redirects to an error page, will work on it --}}
+{{!-- Took out hardcoded header/footer and replaced with HBS partial which leads to the partials folder created. 8/21 --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,18 +11,7 @@
 
 <body>
   <div class="container">
-    <header>
-      <ul>
-        <li><img class="logo" src="./images/logo.png" alt="logo"></li>
-        <li><a href="/">Browse</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/create">Add a Cube</a></li>
-        <li><a href="/create/accessory">Add Accessory</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-      </ul>
-    </header>
+  {{> header}}
     <main>
 	<h1>Login Form</h1>
 <div class="form">
@@ -37,21 +26,8 @@
 </div>
     </main>
   </div>
-  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+  {{> footer}}
 
 </body>
 
 </html>
-
-{{!-- Convert to hbs --}}
-{{!-- <h1>Login Form</h1>
-<div class="form">
-    <form action='/login' method="POST">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <input type="submit" value="Login">
-    </form>
-</div> --}}
