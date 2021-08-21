@@ -1,4 +1,4 @@
-{{!-- Changes didn't break this, good stuff --}}
+{{!-- Broke this, ugh --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,18 +12,6 @@
 <body>
   <div class="container">
     {{> header}}
-    {{!-- <header>
-      <ul>
-        <li><img class="logo" src="./images/logo.png" alt="logo"></li>
-        <li><a href="/">Browse</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/create">Add A Cube</a></li>
-        <li><a href="/create/accessory">Add Accessory</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-      </ul>
-    </header> --}}
     <main>
       <h1>Create</h1>
       <div class="form">
@@ -49,31 +37,6 @@
     </main>
   </div>
   {{> footer}}
-  {{!-- <footer>@Cubicle: Exercise for Express.js and Handlebars</footer> --}}
 
 </body>
-
 </html>
-
-{{!-- Hbs conversion needed --}}
-{{!-- <h1>Create</h1>
-      <div class="form">
-        <form action='/create' method="POST">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name">
-          <label for="name">Description</label>
-          <textarea id="name" name="description"></textarea>
-          <label for="image">Image URL</label>
-          <input type="text" id="image" name="imageUrl">
-          <label for="difficulty">Difficulty</label>
-          <select id="difficulty" name="difficultyLevel">
-            <option value="1">1 - Very Easy</option>
-            <option value="2">2 - Easy</option>
-            <option value="3">3 - Medium (Standard 3x3)</option>
-            <option value="4">4 - Intermediate</option>
-            <option value="5">5 - Expert</option>
-            <option value="6">6 - Hardcore</option>
-          </select>
-          <input type="submit" value="Create">
-        </form>
-      </div> --}}

@@ -1,3 +1,4 @@
+// No changes made 8/21
 const mongoose = require("mongoose");
 //const Cube = require('./Cube');
 const Schema = mongoose.Schema;

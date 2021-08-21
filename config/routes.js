@@ -1,7 +1,10 @@
 // TODO: Require Controllers...
 const express = require("express");
 const CubeModel = require("../models/Cube");
-const AccessoryModel = require('../models/Accessory');
+const User = require("../models/User");
+const Accessory = require('../models/Accessory');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
 	// TODO...
@@ -39,6 +42,44 @@ module.exports = (app) => {
 
 	});
 
+	// Added the register 8/21 the get and post for /register //
+	app.get("/register", function (req, res) {
+		res.render("register");
+	});
+
+	app.post("/register", function(req,res){
+		console.log('reg body', req.body);
+		bcrypt.hash(req.body.password, 8, function(err, hash){
+			//Store has in your PW DB.
+			let tempuser = new User({ username:req.body.username ,password: hash });
+
+			console.log(tempuser);
+			tempuser.save();
+			res.send("/register");
+		});
+	});
+
+	// Used register template to do the log in login 8/21 the get and post for /login //
+	app.get("/login", function (req, res) {
+		res.render("login");
+	});
+
+
+	app.post("/login", async function(req,res){
+		console.log(req.body);
+		await User.findOne({ username: req.body.username }, function (err, user) {
+			console.log('user found!!!', user);
+			//From the bcrypt docs
+			bcrypt.compare(req.body.password, user.password, function(err, result) {
+				// result == true
+				console.log("The password is", results);
+			});
+			
+		});
+
+		res.send("login post route");
+	});
+
 	app.get("/details", function (req, res) {
 		res.render("details");
 	});
@@ -54,7 +95,7 @@ module.exports = (app) => {
 
 	app.get("/create/accessory", function (req, res) {
 		res.send(`<h1> No CREATE ACCESSORY data yet, id is ${req.params.id} </h1>`);
-		res.render("create/accessory");
+		res.render("/create/accessory");
 	});
 
 	app.post("/create/accessory", function (req, res) {

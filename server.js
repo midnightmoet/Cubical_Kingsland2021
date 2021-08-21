@@ -1,11 +1,12 @@
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || 'development';
+const config = require('./config/config')[env];
+const app = require('express')();
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+require('dotenv').config();
+require('./config/express')(app);
+require('./config/routes')(app);
 
-const config = require("./config/config")[env];
-const app = require("express")();
-const mongoose = require("mongoose");
-
-require("./config/express")(app);
-require("./config/routes")(app);
 
 
 mongoose.connect(
@@ -25,6 +26,8 @@ mongoose.connect(
     .catch((err) => console.log(err));
 
   //We have a pending connection to the test database running on localhost. We now need to get notified if we connect successfully or if a connection error occurs:
+
+
 const db = mongoose.connection;  //declare the db (database)
 
 db.on('error', console.error.bind(console, 'connection error:'));
