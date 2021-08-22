@@ -1,18 +1,20 @@
-const express = require("express");
+const express = require("express"); //remember express is a package, do npm install per docs
 const CubeModel = require("../models/Cube");
 const AccessoryModel = require("../models/Accessory");
 const User = require("../models/User");
-const { restart } = require("nodemon");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const saltRounds = 8;
+const { restart } = require("nodemon"); //seen this on SP code and added it 8/21
+const bcrypt = require("bcrypt"); // added bcrypt and did the install for it, its a package
+const jwt = require("jsonwebtoken"); // added jsonwebtoken and did the install for it, its a package
+const saltRounds = 8; // added saltRounds and gave it 8 rounds which is simple, not time consuming
 
 module.exports = (app) => {
+
+//--- homepage/browser page --- //
 	app.get("/",  async  function (req, res) {
 		await CubeModel.find(function (err, cubes){
 			if(err) return console.error(err);
 			console.log(cubes);
-		res.render("index", { cubes, title: "Midnightmoets Cube" });
+		res.render("index", { cubes, title: "Midnightmoet's Cube" });
 		});
 	});
 
@@ -21,10 +23,11 @@ module.exports = (app) => {
 		res.render("about");
 	});
 
+//------Create-----//
 	app.get("/create", function (req, res) {
 		res.render("create");
 	});
-// Changed to simplify this app.post 8/22
+
 	app.post("/create", function (req, res) {
 		console.log(req.body);
 		const newCube = new CubeModel(req.body);
@@ -35,7 +38,7 @@ module.exports = (app) => {
 
 	});
 	
-	// Added the register 8/21 the get and post for /register //
+// ---------- register ----- //
 	app.get("/register", function (req, res) {
 		res.render("register");
 	});
@@ -56,7 +59,7 @@ module.exports = (app) => {
 	});
 
 
-	// Used register template to do the log in login 8/21 the get and post for /login //
+// ---- login --- //
 	app.get("/login", function (req, res) {
 		res.render("login");
 	});
@@ -85,6 +88,7 @@ module.exports = (app) => {
 		res.redirect("/");
 	});
 
+//---- details ---- //
 	app.get("/details", function (req, res) {
 		res.render("details");
 	});
@@ -97,7 +101,7 @@ module.exports = (app) => {
 		});
 	});
 
-
+// ---- createAccessory --//
 	app.get("/create/accessory", function (req, res) {
 		//res.send(`<h1> No CREATE ACCESSORY data yet, id is ${req.params.id} </h1>`);
 		res.render("createAccessory");
@@ -111,15 +115,17 @@ module.exports = (app) => {
 		res.redirect(301, "/");
 	});
 
-
-	app.get("/attach/accessory/:id", function (req, res) {
+//----- attachAccessory -- //
+	app.get("/details/attach/accessory/:id", function (req, res) {
 		res.send(`<h1> No ATTACH ACCESSORY data yet, id is ${req.params.id} </h1>`);
 	});
 
-
+//---- 404 page -- //
 	app.get("/*", (req, res) => {
-		res.render("404");
+        // This commented out code throws an error jwt /undefined.  did a const which didn't correct it. 8/22 
+		//res.render("404", { jwt: req.cookies.jwt }); 
+        res.render("404");
 	});		
 };
 
-// When trying to log in it throws an error of User found! null.  TypeError: Cannot read property 'password' of null.  Will find and correct. 8/22 ~ midnightmoet --//
+// This does what it is intended to do.  Some tweaks needed, but so far nodemon Gods are happy.  8/22--//

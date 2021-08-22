@@ -1,12 +1,13 @@
 // Per peer this code makes more sense instead of the split up 8/21
 
 const Cube = require('../models/Cube');
+//const jwt = require('jsonwebtoken');
 
 const index_get = async function (req, res) {
     let cubes = await Cube.find(function (err, cubes){
         if (err) return console.log(err);
     }).lean().exec();
-    res.render('index', {cubes: cubes, jwt: req.cookies.jwt}); // cubes is an array, need to pass in as obj for hbs
+    res.render('index', {cubes: cubes, jwt: req.cookies.jwt}); // cubes is an array, need to pass in as object for hbs
 };
 
 const about_get = (req, res) => {

@@ -10,4 +10,4 @@
     <li>3. from terminal run: <strong>npm init, npm run production </strong></li>
 </ol>
 
-<i>this project is a work in progress.  will update when this is completed. </i>
+<i>This project is a work in progress.  Will update when this is completed. </i>
