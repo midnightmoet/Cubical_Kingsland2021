@@ -1,5 +1,5 @@
-{{!-- Nothing done to this yet other that point out what needs hbs coding 8/21 --}}
-<!DOCTYPE html>
+{{!-- Nothing done to this yet other that point out what needs hbs coding 8/22 --}}
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +13,7 @@
   <div class="container">
     <header>
       <ul>
-        <li><img class="logo" src="./images/logo.png" alt="logo"></li>
+        <li><img class="logo" src="./images/logo.png"></li>
         <li><a href="/">Browse</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/create">Add a Cube</a></li>
@@ -26,7 +26,7 @@
     <main>
 	<h1>Edit Cube</h1>
 <div class="form">
-  <form action='/edit' method="POST">
+  <form action='/' method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" value="">
     <label for="name">Description</label>
@@ -52,26 +52,3 @@
 </body>
 
 </html>
-
-{{!-- Convert to hbs --}}
-{{!-- <h1>Edit Cube</h1>
-<div class="form">
-  <form action='/edit' method="POST">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="">
-    <label for="name">Description</label>
-    <textarea id="name" name="description"></textarea>
-    <label for="image">ImageUrl</label>
-    <input type="text" id="image" name="imageUrl" value="">
-    <label for="difficulty">Difficulty</label>
-    <select id="difficulty" name="difficultyLevel">
-      <option value="1">1 - Very Easy</option>
-      <option value="2">2 - Easy</option>
-      <option value="3">3 - Medium (Standard 3x3)</option>
-      <option value="4">4 - Intermediate</option>
-      <option value="5">5 - Expert</option>
-      <option value="6">6 - Hardcore</option>
-    </select>
-    <input type="submit" value="Edit">
-  </form>
-</div> --}}
