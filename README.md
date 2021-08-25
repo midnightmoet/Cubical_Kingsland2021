@@ -5,9 +5,9 @@
 <p>Using node.js, mongoDB, express, and handlebars.</p>
 
 <ol>
-    <li>1. from terminal run: <strong> npm install </strong> </li>
-    <li>2. <strong> define </strong> your creds in config/config.js</li>
-    <li>3. from terminal run: <strong>npm init, npm run production </strong></li>
+    <li> from terminal run: <strong> npm install </strong> </li>
+    <li> <strong> define </strong> your creds in config/config.js</li>
+    <li> from terminal run: <strong>npm init, npm run production </strong></li>
 </ol>
 
 <i>This project is a work in progress.  Will update when this is completed. </i>
