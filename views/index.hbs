@@ -15,16 +15,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<ul>
-					<li><img class="logo" src="./images/logo.png" /></li>
-					<li><a href="/">Browse</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/create">Add a Cube</a></li>
-					<li><a href="/create/accessory">Add Accessory</a></li>
-					<li><a href="/logout">Logout</a></li>
-					<li><a href="/login">Login</a></li>
-					<li><a href="/register">Register</a></li>
-				</ul>
+				{{>navigation}}
 			</header>
 			<main>
 				<h1>{{title}}</h1>
@@ -53,16 +44,16 @@
 
 				{{#each cubes}}
 					<div class="cube">
-						<img class="cube" src="{{cube.imageUrl}}" />
-						<p class="name">{{cube.name}}</p>
-						<p><span>Difficulty level:</span>{{cube.difficultyLevel}}</p>
-						<a class="btn" href="/details/{{cube._id}}">Details</a>
+						<img class="cube" src="{{imageUrl}}" />
+						<p class="name">{{name}}</p>
+						<p><span>Difficulty level:</span>{{difficultyLevel}}</p>
+						<a class="btn" href="/details/{{_id}}">Details</a>
 					</div>
 				{{/each}}
 
 			</main>
 		</div>
-		<footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+		{{>footer}}
 	</body>
 
 </html>

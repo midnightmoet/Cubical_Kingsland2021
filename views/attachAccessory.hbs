@@ -1,0 +1,64 @@
+{{!-- Changed 8/23 --}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Attach Accessory</title>
+  <link href="./stylesheets/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+          {{> navigation}}
+    </header>
+    <main class="bg-light">
+      <div class="row row justify-content-start bg-light m-1">
+        <div class="col-6">
+           <h1 class="rubik text-primary p-3">Attach a new accessory</h1>
+      <div class="form"> 
+        <h2>{{cube.name}}</h2>
+        
+        {{#if accessories}}
+        <form action='/attach/{{cube._id}}' method="POST">
+          <label for="accessory" class="form-label">Available Accessories</label>
+          <select id="accessory" name="accessory" class="form-control mb-3">
+            {{#each accessories}}
+          <option value="{{id}}">{{name}}</option>
+            {{/each}}
+      
+          </select>
+          <input type="submit" value="Attach" class="btn btn-warning">
+        </form>
+        {{else}}
+        <h3 class="italic">This cube has all available accessories so far or there is no available at all...
+        </h3>
+        {{/if}}
+        
+      </div>
+        </div>
+
+         <div class="col-6">
+           <img class="img-fluid p-3 float-end" src="{{cube.image_url}}">
+         </div>
+
+      </div>
+
+
+
+     <div class="m-3">
+
+<a class="btn btn-primary mb-3" href="/">Back</a>
+
+
+       
+     </div>
+    </main>
+  </div>
+    {{>footer}}
+
+</body>
+
+</html>

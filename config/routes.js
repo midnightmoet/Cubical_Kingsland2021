@@ -8,48 +8,46 @@ const jwt = require("jsonwebtoken"); // added jsonwebtoken and did the install f
 const saltRounds = 8; // added saltRounds and gave it 8 rounds which is simple, not time consuming
 
 module.exports = (app) => {
-
-//--- homepage/browser page --- //
-	app.get("/",  async  function (req, res) {
-		await CubeModel.find(function (err, cubes){
-			if(err) return console.error(err);
+	//--- HOMEPAGE / BROWSER PAGE --- //
+	app.get("/", async function (req, res) {
+		await CubeModel.find(function (err, cubes) {
+			if (err) return console.error(err);
 			console.log(cubes);
-		res.render("index", { cubes, title: "Midnightmoet's Cube" });
-		});
+			res.render("index", { cubes, title: "Midnightmoet's Cube" });
+		}).lean(); //Thank you STAR!
 	});
 
-	// --  ABOUT -- CAN PUT IN CONTROLLER, and import it 8/21 .. do later with ALL of them --- // 
+	// --  ABOUT -- CAN PUT IN CONTROLLER, and import it 8/21 .. do later with ALL of them --- //
 	app.get("/about", function (req, res) {
 		res.render("about");
 	});
 
-//------Create-----//
-	app.get("/create", function (req, res) {
+	//------CREATE-----//
+	app.get("/create", async function (req, res) {
 		res.render("create");
 	});
 
 	app.post("/create", function (req, res) {
 		console.log(req.body);
 		const newCube = new CubeModel(req.body);
-		newCube.save(function(err, newCube) {
+		newCube.save(function (err, newCube) {
 			console.log("A new cube has been saved!!");
 		});
 		res.redirect(301, "/");
-
 	});
-	
-// ---------- register ----- //
+
+	// ----- REGISTER ----- //
 	app.get("/register", function (req, res) {
 		res.render("register");
 	});
 
-	app.post("/register", function(req,res){
-		console.log('reg body', req.body);
-		bcrypt.hash(req.body.password, 8, function(err, hash){
+	app.post("/register", function (req, res) {
+		console.log("reg body", req.body);
+		bcrypt.hash(req.body.password, 8, function (err, hash) {
 			//Store has in your PW DB.
-			let tempuser = new User({ 
-				username:req.body.username ,
-				password: hash 
+			let tempuser = new User({
+				username: req.body.username,
+				password: hash,
 			});
 
 			console.log(tempuser);
@@ -58,14 +56,12 @@ module.exports = (app) => {
 		});
 	});
 
-
-// ---- login --- //
+	// ---- LOGIN --- //
 	app.get("/login", function (req, res) {
 		res.render("login");
 	});
 
-
-    app.post("/login", async function (req, res) {
+	app.post("/login", async function (req, res) {
 		console.log(req.body);
 		await User.findOne(
 			{ username: req.body.username },
@@ -88,22 +84,26 @@ module.exports = (app) => {
 		res.redirect("/");
 	});
 
-//---- details ---- //
-	app.get("/details", function (req, res) {
-		res.render("details");
-	});
+	//---- DETAILS ---- //
+	//This was simple starter code but changed it to work for this project
+	// app.get("/details", function (req, res) {
+	// 	res.render("details");
+	// });
 
-	app.get("/details/:id", async function (req, res) {
+	app.get("/details/:id", function (req, res) {
 		// find by id, then pass to template
-		await CubeModel.findById(req.params.id).then((cube) => {
-			console.log(cube);
-			res.render("details", { cube });
-		});
+		CubeModel.findById(req.params.id)
+			.lean()
+			.then((cube) => {
+				console.log(cube);
+				res.render("details", { cube });
+			}).catch((err) =>
+			console.log(err)
+			);
 	});
 
-// ---- createAccessory --//
+	// ---- CREATE ACCESSORY --//
 	app.get("/create/accessory", function (req, res) {
-		//res.send(`<h1> No CREATE ACCESSORY data yet, id is ${req.params.id} </h1>`);
 		res.render("createAccessory");
 	});
 
@@ -115,17 +115,19 @@ module.exports = (app) => {
 		res.redirect(301, "/");
 	});
 
-//----- attachAccessory -- //
-	app.get("/details/attach/accessory/:id", function (req, res) {
-		res.send(`<h1> No ATTACH ACCESSORY data yet, id is ${req.params.id} </h1>`);
+	//----- ATTACH ACCESSORY-- changed 8/23--//
+	app.get("/details/attach/accessory/:id", async function (req, res) {
+		//find id and attach to template
+		await attachAccessory.findById(req.params.id).lean();
+		res.render("attachAccessory", { oneAccessory: anAccessory });
 	});
 
-//---- 404 page -- //
+	//---- 404 PAGE -- //
 	app.get("/*", (req, res) => {
-        // This commented out code throws an error jwt /undefined.  did a const which didn't correct it. 8/22 
-		//res.render("404", { jwt: req.cookies.jwt }); 
-        res.render("404");
-	});		
+		// This commented out code throws an error jwt /undefined.  did a const which didn't correct it. 8/22
+		//res.render("404", { jwt: req.cookies.jwt });
+		res.render("404");
+	});
 };
 
-// This does what it is intended to do.  Some tweaks needed, but so far nodemon Gods are happy.  8/22--//
+// This does what it is intended to do.  Some tweaks needed, but so far nodemon Gods are happy.  8/25--//

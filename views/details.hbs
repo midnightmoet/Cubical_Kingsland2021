@@ -1,40 +1,56 @@
-{{!-- Doesn't break anything per nodemon 8/22--}}
+{{!-- Doesn't break anything per nodemon 8/23--}}
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8" />
-		<title>Cubicle</title>
-		<link href="/css/site.css" type="text/css" rel="stylesheet" />
-		<link
-			rel="shortcut icon"
-			type="image/x-icon"
-			href="/images/favicon.png"
-		/>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Attach Accessory</title>
+    <link href="./css/site.css" type="text/css" rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+<body>
+    {{> navigation}}
+    <div class="container">
+      <div class="row row justify-content-start bg-light m-1">
+        <div class="col-6 m-4 bg-light">    
+          <h1 class="rubik text-primary ">{{cube.name}} </h1>
+          <p><span>Description:</span> {{cube.description}}</p>
+          <p><span>Difficulty level:</span> {{cube.difficultyLevel}}</p>
+        
+          <a class="btn btn-primary" href="/attach/{{cube._id}}">Attach</a>
+          {{#if loggedIn}}
+          <a class="btn btn-info" href="/edit/{{cube._id}}">Edit</a>
+          <a class="btn btn-danger" href="/delete/{{cube._id}}">Delete</a>
+          {{/if}}
+        
+   <h2 class="mt-3 rubik text-primary">Accessories</h2>
+   
+   <div class="row">
+    {{#if cube.accessories}}
+              {{#each cube.accessories }}
 
-	<body>
-		<div class="container">
-			<header>
-				<ul>
-					<li><img class="logo" src="/images/logo.png" /></li>
-					<li><a href="/">Browse</a></li>
-					<li><a href="/create">Add a Cube</a></li>
-					<li><a href="/about">About</a></li>
-				</ul>
-			</header>
-			<main>
-				<h1>{{cube.name}}</h1>
-				<img class="cube" src="{{cube.imageUrl}}" />
-				<div class="details">
-					<p><span>Description:</span>
-						{{cube.description}}</p>
-					<p><span>Difficulty level:</span>{{cube.difficultyLevel}}</p>
-					<a class="btn" href="/">Back</a>
-				</div>
-			</main>
-		</div>
-		{{>footer}}
-	</body>
+              <div class="col-4" >
+               <img src="{{imageUrl}}" class="card-img-top" alt="{{name}}">
+               <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+               <p class="card-text">{{description}}</p>
+                  
+                </div>
+              </div>
+                {{/each}}
+              {{else}}
+                <h3 class="italic">This cube has no accessories yet...</h3>
+              {{/if}}
+        
 
+   </div>
+        </div>
+        <div class="col-4 m-4 mx-auto">
+          <img class="p-3 img-fluid rounded border border-3 border-primary" src="{{cube.image_url}}">
+        </div>
+         </div>
+     </div>
+
+    {{>footer}}
+</body>
 </html>

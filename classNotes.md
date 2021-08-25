@@ -81,3 +81,12 @@ bcrypt.hash(password, saltRounds, function(err, hash) {
 
 ---------------------------------------------------------------
 
+<!-- Class notes 8/23 -->
+{{#if errors}}
+     <div id="notifications">
+     
+<div class="alert alert-warning" role="alert">
+{{errors}}
+</div>
+  </div>
+    {{/if}}
