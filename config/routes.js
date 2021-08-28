@@ -97,9 +97,8 @@ module.exports = (app) => {
 			.then((cube) => {
 				console.log(cube);
 				res.render("details", { cube });
-			}).catch((err) =>
-			console.log(err)
-			);
+			})
+			.catch((err) => console.log(err));
 	});
 
 	// ---- CREATE ACCESSORY --//
